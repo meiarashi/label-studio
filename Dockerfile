@@ -18,5 +18,5 @@ RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
 EXPOSE ${PORT:-8080}
 
 # コンテナ起動時に実行するコマンド
-# PORT環境変数を使用してホストを設定します
-CMD ["sh", "-c", "label-studio start --host 0.0.0.0 --port ${PORT:-8080}"]
+# PORT環境変数を使用せず、直接ポートを指定（RenderのデフォルトPORTは10000）
+CMD ["label-studio", "start", "--host", "0.0.0.0", "--port", "10000"]
