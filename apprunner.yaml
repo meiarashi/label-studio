@@ -1,0 +1,16 @@
+    version: 1.0 # App Runner 設定ファイルのバージョン
+    runtime: dockerfile # ランタイムとして Dockerfile を使用することを明示
+    build:
+      dockerfile: Dockerfile # 使用する Dockerfile のパス
+      port: 8080 # コンテナがリッスンするポート
+    run:
+      port: 8080 # App Runner がトラフィックを転送するポート
+    healthcheck:
+      path: /static/favicon.ico # ヘルスチェックパス (以前設定したもの)
+      interval: 10 # ヘルスチェック間隔 (秒) - 必要に応じて調整
+      timeout: 5   # タイムアウト (秒) - 必要に応じて調整
+      healthy_threshold: 2   # 成功とみなす連続成功回数
+      unhealthy_threshold: 3 # 失敗とみなす連続失敗回数
+    # 必要に応じて CPU やメモリも指定できます
+    # cpu: 1024 # 1 vCPU相当
+    # memory: 2048 # 2 GB相当
