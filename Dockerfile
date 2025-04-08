@@ -17,6 +17,8 @@ RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
 # Render.comはPORT環境変数を自動的に設定します
 EXPOSE ${PORT:-8080}
 
-# コンテナ起動時に実行するコマンド
-# PORT環境変数を使用せず、直接ポートを指定（RenderのデフォルトPORTは10000）
-CMD ["label-studio", "start", "--host", "0.0.0.0", "--port", "10000"]
+# コンテナ起動時に実行するコマンド (ローカル実行用: ポート8080を使用)
+CMD ["label-studio", "start", "--host", "0.0.0.0", "--port", "8080"]
+
+# デバッグ用CMD (コメントアウト)
+# CMD ["sleep", "infinity"]
