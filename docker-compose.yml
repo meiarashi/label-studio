@@ -1,0 +1,20 @@
+version: '3.5'
+services:
+  label-studio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: label-studio-custom
+    ports:
+      - "80:8080"
+    volumes:
+      - label-studio-data:/app/data
+    environment:
+      - LABEL_STUDIO_HOST=${LABEL_STUDIO_HOST:-http://localhost}
+      - LABEL_STUDIO_BASE_DATA_DIR=/app/data
+      # 以下は必要に応じて設定
+      # - LABEL_STUDIO_USERNAME=admin
+      # - LABEL_STUDIO_PASSWORD=password
+
+volumes:
+  label-studio-data:
